@@ -21,6 +21,30 @@ With Docker installed https://docs.docker.com/get-docker/
 
 ``docker-compose run php "vendor/bin/phpunit"``
 
+### GET or refresh quotes (json API)
+
+```
+curl --location 'http://0.0.0.0:80/api/quotes' 
+
+["The world is our office","I am the head of Adidas. I will bring Adidas and Puma back together and bring me and jay
+back together","You basically can say anything to someone on an email or text as long as you put LOL at the end.","I
+love sleep; it's my favorite.","If you have the opportunity to play this game of life you need to appreciate every
+moment. a lot of people don't appreciate the moment until it's passed."]
+```
+
+
+### GET or refresh quotes (web)
+
+```
+http://localhost/quotes'
+
+Life is the ultimate gift
+We used to diss Michael Jackson the media made us call him crazy ... then they killed him
+For me to say I wasn't a genius I'd just be lying to you and to myself
+All the musicians will be free
+I feel like me and Taylor might still have sex
+```
+
 ### @todo
 
 ...
