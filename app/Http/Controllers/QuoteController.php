@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager\Driver\QuoteFetcherInterface;
 use App\Manager\QuoteFetcher;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

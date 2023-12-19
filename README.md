@@ -15,7 +15,7 @@ With Docker installed https://docs.docker.com/get-docker/
 
 * go to project root directory, then...
 
-``docker-compose build php && docker-compose up -d``
+``docker-compose build laravel.test && docker-compose up -d``
 
 ### Running the tests
 
