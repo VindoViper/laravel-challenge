@@ -165,9 +165,9 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\QuoteFetcherServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -184,5 +184,11 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
+
+    'clients' => [
+        'kanye' => [
+            'base_url' => env('QUOTES_URL', 'https://api.kanye.rest'),
+        ],
+    ],
 
 ];
