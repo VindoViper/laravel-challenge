@@ -15,11 +15,22 @@ With Docker installed https://docs.docker.com/get-docker/
 
 * go to project root directory, then...
 
-``docker-compose build laravel.test && docker-compose up -d``
+``php artisan sail:install``
+
+Also copy `.env.example` into `.env`
+for further help with setting up Laravel Sail see https://laravel.com/docs/10.x/sail
+
+* build the database:
+
+``vendor/bin/sail artisan migrate``
 
 ### Running the tests
 
-``docker-compose run laravel.test "vendor/bin/phpunit"``
+``vendor/bin/sail test``
+
+An API token has been pre-populated for the sake of speed, use it to authenticate any requests to the API endpoints:
+
+``cf94bfd0bd5ba98975e8974bd4844319``
 
 ### GET quotes (json API)
 
@@ -65,4 +76,6 @@ http://localhost/quotes
 
 ### @todo
 
-...
+* caching
+* behat tests
+* better view template
