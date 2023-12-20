@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager\QuoteFetcher;
+use App\Models\Quote;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
@@ -12,7 +12,7 @@ class QuoteController extends Controller
     {
         return view(
             'quote',
-            ['quotes' => QuoteFetcher::fetchQuoteSet(5)]
+            ['quotes' => Quote::take(5)->orderBy('created_at', 'desc')->get()]
         );
     }
 }

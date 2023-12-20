@@ -19,30 +19,48 @@ With Docker installed https://docs.docker.com/get-docker/
 
 ### Running the tests
 
-``docker-compose run php "vendor/bin/phpunit"``
+``docker-compose run laravel.test "vendor/bin/phpunit"``
 
-### GET or refresh quotes (json API)
-
-```
-curl --location 'http://0.0.0.0:80/api/quotes' 
-
-["The world is our office","I am the head of Adidas. I will bring Adidas and Puma back together and bring me and jay
-back together","You basically can say anything to someone on an email or text as long as you put LOL at the end.","I
-love sleep; it's my favorite.","If you have the opportunity to play this game of life you need to appreciate every
-moment. a lot of people don't appreciate the moment until it's passed."]
-```
-
-
-### GET or refresh quotes (web)
+### GET quotes (json API)
 
 ```
-http://localhost/quotes'
+curl --location 'http://0.0.0.0:80/api/quotes' \
+--header 'Authorization: Bearer cf94bfd0bd5ba98975e8974bd4844319'
 
-Life is the ultimate gift
-We used to diss Michael Jackson the media made us call him crazy ... then they killed him
-For me to say I wasn't a genius I'd just be lying to you and to myself
-All the musicians will be free
-I feel like me and Taylor might still have sex
+[{"id":19,"text":"All the musicians will be
+free","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"},{"id":18,"text":"I hate
+when I'm on a flight and I wake up with a water bottle next to me like oh great now I gotta be responsible for this
+water bottle","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"},{"id":20,"text":"I
+give up drinking every
+week","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"},{"id":17,"text":"Culture is
+the most powerful force in humanity under
+God","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"},{"id":16,"text":"If I got
+any cooler I would freeze to
+death","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}]
+
+```
+
+### POST refresh quotes (json API)
+
+```
+curl --location --request POST 'http://0.0.0.0:80/api/refresh-quotes' \
+--header 'Authorization: Bearer cf94bfd0bd5ba98975e8974bd4844319'
+
+201
+
+```
+
+### GET quotes (web)
+
+```
+http://localhost/quotes
+
+{"id":19,"text":"All the musicians will be free","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}
+{"id":18,"text":"I hate when I'm on a flight and I wake up with a water bottle next to me like oh great now I gotta be responsible for this water bottle","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}
+{"id":20,"text":"I give up drinking every week","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}
+{"id":17,"text":"Culture is the most powerful force in humanity under God","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}
+{"id":16,"text":"If I got any cooler I would freeze to death","created_at":"2023-12-20T09:54:22.000000Z","updated_at":"2023-12-20T09:54:22.000000Z"}
+
 ```
 
 ### @todo

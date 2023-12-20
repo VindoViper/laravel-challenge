@@ -3,15 +3,31 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Manager\Driver\QuoteFetcherInterface;
 use App\Manager\QuoteFetcher;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use App\Models\Quote;
+use Symfony\Component\HttpFoundation\Response;
 
 class APIQuoteController extends Controller
 {
     public function getQuotes(): string
     {
-        return \json_encode(QuoteFetcher::fetchQuoteSet(5));
+        $quotes = Quote::take(5)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return \json_encode($quotes);
+    }
+
+    public function refreshQuotes(): Response
+    {
+        $nextQuoteSet = QuoteFetcher::fetchQuoteSet(5);
+        foreach ($nextQuoteSet as $newQuote) {
+            $quote = new Quote();
+            $quote->text = $newQuote;
+
+            $quote->save();
+        }
+
+        return response()->noContent(Response::HTTP_CREATED);
     }
 }
